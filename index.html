@@ -204,6 +204,33 @@
             font-size: 1.1rem;
         }
 
+        .nextcloud-card {
+            background: var(--cream-light);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .nextcloud-btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: var(--gold);
+            color: var(--charcoal);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .nextcloud-btn:hover {
+            background: var(--sage);
+            color: white;
+            transform: scale(1.05);
+        }
+
         /* Gallery Section */
         .gallery-section {
             background: var(--cream);
@@ -447,6 +474,11 @@
             <p class="highlight-text">Oberaußem</p>
             <p>Mehr Infos folgen in Kürze...</p>
         </div>
+        <div class="nextcloud-card fade-in" style="margin-top: 30px;">
+            <h3 style="color: var(--charcoal); margin-bottom: 15px;">📸 Fotos hochladen & anschauen</h3>
+            <p style="color: var(--charcoal-light); margin-bottom: 20px;">Scannt den QR-Code oder klickt auf den Button um Fotos vom Umtrunk hochzuladen und die Galerie zu sehen.</p>
+            <a href="http://187.124.4.232:32770/s/4pAqS27JeSerJyy" target="_blank" class="nextcloud-btn">Zur Foto-Galerie →</a>
+        </div>
     </section>
 
     <!-- Gallery Section -->
@@ -489,8 +521,8 @@
 
     <script>
         // Configuration - to be set by Tony
-        const NEXTCLOUD_WEBDAV = ''; // e.g., https://deine-nextcloud.de/remote.php/dav/files/username/
-        const NEXTCLOUD_FOLDER = ''; // e.g., /Umtrunk/
+        const NEXTCLOUD_WEBDAV = 'http://187.124.4.232:32770/remote.php/dav/files/tony/';
+        const NEXTCLOUD_FOLDER = 'Umtrunk_2026/';
 
         // Intersection Observer for fade-in animations
         const observerOptions = {
