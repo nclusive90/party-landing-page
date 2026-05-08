@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Nico & Franziska//Umtrunk 2026//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+
+BEGIN:VEVENT
+DTSTART:20261003T140000Z
+DTEND:20261003T200000Z
+DTSTAMP:20260504T000000Z
+UID:umtrunk-2026@nico-franziska
+SUMMARY:Umtrunk – Nico & Franziska
+DESCRIPTION:Feiert mit uns!\nDatum: Samstag, 03. Oktober 2026\nStart: ab 16:00 Uhr\nMehr Infos: https://qr031026-umtrunk.nf3d.de/
+LOCATION:Vinzentiusstraße 5, 50129 Bergheim
+STATUS:CONFIRMED
+ORGANIZER;CN="Nico & Franziska":mailto:umtrunk@nf3d.de
+
+END:VEVENT
+END:VCALENDAR

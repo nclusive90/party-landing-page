@@ -15,13 +15,15 @@
         }
 
         :root {
-            --cream: #3D4A3D;
-            --cream-light: #4A5A4A;
-            --sage: #5C6B55;
-            --sage-light: #7A8B70;
-            --gold: #C9A962;
-            --charcoal: #F5F0E8;
-            --charcoal-light: #B8B0A0;
+            --cream: #8A9478;
+            --cream-light: #9BA88A;
+            --cream-lighter: #ACB898;
+            --cream-lightest: #CDD0C4;
+            --sage: #6B7A5A;
+            --sage-light: #7A8A69;
+            --gold: #C9A227;  /* Rich gold color */
+            --charcoal: #2C3E2D;
+            --charcoal-light: #4A5A48;
         }
 
         html {
@@ -66,6 +68,18 @@
             animation: pulse 8s ease-in-out infinite;
         }
 
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236B7A5A' fill-opacity='0.06'%3E%3Cpath d='M30 30c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10-10-4.5-10-10zm-20 0c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10-10-4.5-10-10z'/%3E%3Ccircle cx='20' cy='20' r='3'/%3E%3Ccircle cx='40' cy='20' r='3'/%3E%3Ccircle cx='20' cy='40' r='3'/%3E%3Ccircle cx='40' cy='40' r='3'/%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236B7A5A' fill-opacity='0.05'%3E%3Cpath d='M10 10c0-2.2-1.8-4-4-4-3.3 0-6 2.7-6 6s2.7 6 6 6v-4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2h4c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2v4c3.3 0 6-2.7 6-6s-2.7-6-6-6c-2.2 0-4 1.8-4 4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
         @keyframes pulse {
             0%, 100% { transform: scale(1); opacity: 0.1; }
             50% { transform: scale(1.1); opacity: 0.15; }
@@ -78,27 +92,36 @@
 
         .couple-names {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 7vw, 5rem);
-            font-weight: 500;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 300;
             color: var(--charcoal);
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+
+        .hero-date {
+            font-size: 0.8rem;
+            color: var(--charcoal);
+            font-weight: 300;
             letter-spacing: 2px;
+            margin-top: 0;
         }
 
         .event-type {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-size: clamp(3rem, 10vw, 7rem);
             color: var(--gold);
             font-weight: 500;
-            letter-spacing: 4px;
+            letter-spacing: 10px;
             margin-top: 10px;
             font-style: italic;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
         .wedding-date {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(1.2rem, 3vw, 2rem);
-            color: var(--sage);
+            color: var(--charcoal);
             font-weight: 500;
             letter-spacing: 3px;
             margin-top: 30px;
@@ -106,10 +129,36 @@
 
         .tagline {
             font-size: 1rem;
-            color: var(--charcoal-light);
+            color: var(--charcoal);
             margin-top: 20px;
             font-weight: 300;
             letter-spacing: 2px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-item span {
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--gold);
+            display: block;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            color: var(--charcoal);
+            letter-spacing: 1px;
+            margin-top: 5px;
         }
 
         .scroll-indicator {
@@ -131,11 +180,36 @@
             stroke: var(--sage);
         }
 
-        /* Info Section */
-        .info-section {
-            background: var(--cream-light);
+        /* Navigation dots */
+        .nav-dots {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
         }
 
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--sage-light);
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .nav-dot.active {
+            background: var(--gold);
+            transform: scale(1.3);
+        }
+
+        .nav-dot:hover {
+            background: var(--sage);
+        }
+
+        /* Section Titles */
         .section-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(2rem, 5vw, 3rem);
@@ -152,24 +226,38 @@
             height: 2px;
             background: var(--gold);
             margin: 20px auto 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
+        /* Info Cards */
         .info-card {
-            background: #3D4A3D;
+            background: var(--sage);
             padding: 40px 30px;
             border-radius: 20px;
             text-align: center;
             max-width: 500px;
-            margin: 0 auto;
+            margin: 0 auto 30px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .info-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
-        .info-icon {
+        .info-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .info-card p {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.95rem;
+        }
+
+        .info-card .icon {
             width: 60px;
             height: 60px;
             margin: 0 auto 20px;
@@ -180,80 +268,94 @@
             justify-content: center;
         }
 
-        .info-icon svg {
+        .info-card .icon svg {
             width: 30px;
             height: 30px;
             stroke: white;
-        }
-
-        .info-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            color: var(--charcoal);
-            margin-bottom: 15px;
-        }
-
-        .info-card p {
-            color: var(--charcoal-light);
-            font-size: 0.95rem;
         }
 
         .highlight-text {
             color: var(--gold);
             font-weight: 500;
             font-size: 1.1rem;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.2);
         }
 
-        .nextcloud-card {
+        /* Section backgrounds */
+        .section-wann-wo {
             background: var(--cream-light);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            max-width: 500px;
-            margin: 0 auto;
         }
 
-        .nextcloud-btn {
-            display: inline-block;
-            padding: 15px 35px;
-            background: var(--gold);
-            color: var(--charcoal);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .nextcloud-btn:hover {
-            background: var(--sage);
+        .section-dresscode {
+            background: linear-gradient(135deg, var(--sage) 0%, var(--sage-light) 100%);
             color: white;
-            transform: scale(1.05);
         }
 
-        /* Gallery Section */
-        .gallery-section {
-            background: var(--cream);
+        .section-dresscode .section-title::after {
+            background: var(--gold);
         }
 
-        .gallery-intro {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            color: var(--charcoal-light);
+        .section-dresscode .info-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
         }
 
+        .section-dresscode .info-card h3 {
+            color: white;
+        }
+
+        .section-dresscode .info-card p {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .section-geschenke {
+            background: var(--cream-lighter);
+        }
+
+        .section-galerie {
+            background: var(--cream-lightest);
+        }
+
+        .section-musik {
+            background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-light) 100%);
+            color: white;
+        }
+
+        .section-musik .section-title {
+            color: white;
+        }
+
+        .section-musik .section-title::after {
+            background: var(--gold);
+        }
+
+        .section-musik .info-card {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .section-musik .info-card h3 {
+            color: white;
+        }
+
+        .section-musik .info-card p {
+            color: rgba(255,255,255,0.85);
+        }
+
+        /* Gallery Grid */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 15px;
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 660px;
+            margin: 0 auto 40px;
+        }
+        .gallery-grid > .gallery-item {
+            text-align: center;
         }
 
         .gallery-item {
             aspect-ratio: 1;
-            background: var(--cream-light);
+            background: var(--cream);
             border-radius: 10px;
             overflow: hidden;
             position: relative;
@@ -278,32 +380,20 @@
             height: 100%;
             color: var(--charcoal-light);
             font-size: 0.85rem;
+            padding: 20px;
+            text-align: center;
         }
 
         .gallery-placeholder svg {
             width: 40px;
             height: 40px;
-            stroke: var(--charcoal-light);
+            stroke: currentColor;
             margin-bottom: 10px;
             opacity: 0.5;
         }
 
-        /* Upload Section */
+        /* Upload Area */
         .upload-section {
-            background: linear-gradient(135deg, var(--sage) 0%, var(--sage-light) 100%);
-            text-align: center;
-            color: white;
-        }
-
-        .upload-section .section-title {
-            color: white;
-        }
-
-        .upload-section .section-title::after {
-            background: white;
-        }
-
-        .upload-area {
             border: 2px dashed rgba(255,255,255,0.4);
             border-radius: 20px;
             padding: 50px 30px;
@@ -311,9 +401,10 @@
             margin: 0 auto;
             cursor: pointer;
             transition: all 0.3s ease;
+            background: rgba(255,255,255,0.05);
         }
 
-        .upload-area:hover {
+        .upload-section:hover {
             border-color: white;
             background: rgba(255,255,255,0.1);
         }
@@ -355,6 +446,7 @@
             border-radius: 10px;
             background: rgba(255,255,255,0.15);
             display: none;
+            text-align: center;
         }
 
         .upload-status.success {
@@ -365,9 +457,221 @@
             background: rgba(244, 67, 54, 0.3);
         }
 
+        /* Moba Musik Card */
+        .moba-card {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .moba-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .moba-card p {
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 20px;
+        }
+
+        .moba-btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: var(--gold);
+            color: var(--charcoal);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .moba-btn:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        .moba-btn.disabled {
+            background: rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.5);
+            cursor: not-allowed;
+        }
+
+        /* RSVP Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 25px;
+            padding: 50px 40px;
+            max-width: 480px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--cream);
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            line-height: 1;
+            color: var(--charcoal);
+        }
+
+        .modal-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--charcoal);
+            margin-bottom: 10px;
+        }
+
+        .modal-header p {
+            color: var(--sage);
+        }
+
+
+        .modal-hearts {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .modal-form .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .modal-form label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--charcoal-light);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .modal-form input[type="text"],
+        .modal-form select,
+        .modal-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--cream);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+        }
+
+        .modal-form input:focus,
+        .modal-form textarea:focus {
+            outline: none;
+            border-color: var(--sage);
+            background: white;
+        }
+
+        .status-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .status-option {
+            flex: 1;
+            cursor: pointer;
+        }
+
+        .status-option input {
+            display: none;
+        }
+
+        .status-option span {
+            display: block;
+            padding: 12px 8px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.85rem;
+            background: var(--cream);
+            transition: all 0.3s;
+        }
+
+        .status-option input:checked + span {
+            background: var(--sage);
+            color: white;
+        }
+
+        .modal-form .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--gold);
+            color: var(--charcoal);
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .modal-form .submit-btn:disabled {
+            background: var(--cream);
+            color: var(--charcoal-light);
+        }
+
+        .form-message {
+            display: none;
+            padding: 10px;
+            background: #FFE5E5;
+            border-radius: 8px;
+            color: #C00;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .modal-success {
+            padding: 20px;
+        }
+
+        .modal-success h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--sage);
+            margin-bottom: 10px;
+        }
+
+        .deadline-note {
+            font-size: 0.8rem;
+            color: var(--charcoal-light);
+            margin-top: 20px;
+        }
+
         /* Footer */
         .footer {
-            background: #3D4A3D;
+            background: var(--charcoal);
             color: white;
             text-align: center;
             padding: 50px 20px;
@@ -378,53 +682,30 @@
             font-size: 0.9rem;
         }
 
+        .footer p:first-child {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            opacity: 1;
+            margin-bottom: 15px;
+        }
+
         .footer .hearts {
             font-size: 1.5rem;
             margin: 20px 0;
-            color: var(--gold);
+            color: #C9A227;
+            text-shadow: 0 0 10px rgba(201, 162, 39, 0.6);
         }
 
         /* Animations */
         .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            opacity: 1 !important;
         }
-
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Navigation dots */
-        .nav-dots {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 100;
-        }
-
-        .nav-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--sage-light);
-            margin: 10px 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-        }
-
-        .nav-dot.active {
-            background: var(--gold);
-            transform: scale(1.3);
-        }
-
-        .nav-dot:hover {
-            background: var(--sage);
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
             .nav-dots {
                 display: none;
@@ -440,18 +721,37 @@
     <!-- Navigation Dots -->
     <nav class="nav-dots">
         <button class="nav-dot active" data-section="hero" aria-label="Hero"></button>
-        <button class="nav-dot" data-section="info" aria-label="Info"></button>
-        <button class="nav-dot" data-section="gallery" aria-label="Galerie"></button>
-        <button class="nav-dot" data-section="upload" aria-label="Upload"></button>
+        <button class="nav-dot" data-section="wann-wo" aria-label="Wann, Wo & Wie"></button>
+        <button class="nav-dot" data-section="dresscode" aria-label="Dresscode"></button>
+        <button class="nav-dot" data-section="geschenke" aria-label="Geschenke"></button>
+        <button class="nav-dot" data-section="galerie" aria-label="Galerie"></button>
+        <button class="nav-dot" data-section="musik" aria-label="Musik"></button>
     </nav>
+
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-content fade-in">
-            <h1 class="couple-names">Nico & Franziska</h1>
+            <h1 class="couple-names">Franziska & Nico</h1>
+            <svg class="rings-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 24" style="width: 36px; height: 18px; margin: 0 auto; opacity: 0.5;">
+                <circle cx="18" cy="12" r="9" fill="none" stroke="var(--charcoal)" stroke-width="2"/>
+                <circle cx="32" cy="12" r="9" fill="none" stroke="var(--charcoal)" stroke-width="2"/>
+            </svg>
+            <p class="hero-date">02.10.2026</p>
             <p class="event-type">Umtrunk</p>
+            <svg class="ornament" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 20" style="width: 120px; height: 20px; margin: 10px auto;">
+                <path d="M0 10h45M75 10h45" stroke="var(--sage)" stroke-width="1" fill="none"/>
+                <circle cx="60" cy="10" r="4" fill="var(--sage)"/>
+                <circle cx="52" cy="10" r="2" fill="var(--sage-light)"/>
+                <circle cx="68" cy="10" r="2" fill="var(--sage-light)"/>
+            </svg>
             <p class="wedding-date">03. Oktober 2026</p>
             <p class="tagline">Feiert mit uns!</p>
+            <div id="countdown" class="countdown" style="margin-top: 20px;">
+                <div class="countdown-item"><span id="cd-days">--</span><div class="countdown-label">Tage</div></div>
+                <div class="countdown-item"><span id="cd-hours">--</span><div class="countdown-label">Stunden</div></div>
+                <div class="countdown-item"><span id="cd-mins">--</span><div class="countdown-label">Minuten</div></div>
+            </div>
         </div>
         <div class="scroll-indicator">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -460,33 +760,87 @@
         </div>
     </section>
 
-    <!-- Info Section -->
-    <section class="section info-section" id="info">
-        <h2 class="section-title fade-in">Wann & Wo</h2>
+    <!-- Wann & Wo Section -->
+    <section class="section section-wann-wo" id="wann-wo">
+        <h2 class="section-title fade-in">Wann, Wo & Wie</h2>
+        
         <div class="info-card fade-in">
-            <div class="info-icon">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+            </div>
+            <h3>Datum & Uhrzeit</h3>
+            <p class="highlight-text">Samstag, 03. Oktober 2026</p>
+            <p>Ab 16:00 Uhr</p>
+        </div>
+
+        <div class="info-card fade-in">
+            <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
             </div>
-            <h3>Veranstaltung&Fest</h3>
-            <p class="highlight-text">Oberaußem</p>
-            <p>Mehr Infos folgen in Kürze...</p>
+            <h3>Location</h3>
+            <p class="highlight-text">Vinzentiusstraße 5</p>
+            <p>50129 Bergheim</p>
+            <div style="display: flex; gap: 10px; margin-top: 15px; justify-content: center;">
+                <a href="https://www.google.com/maps/search/Vinzentiusstra%C3%9Fe+5,+50129+Bergheim" target="_blank" style="padding: 10px 15px; background: #5A6B4A; color: white; text-decoration: none; border-radius: 25px; font-size: 0.9rem;">📍 Route</a>
+                <button onclick="showParkingPopup()" style="padding: 10px 15px; background: #5A6B4A; color: white; border: none; border-radius: 25px; font-size: 0.9rem; cursor: pointer;">🅿 Parken</button>
+            </div>
         </div>
-        <div class="nextcloud-card fade-in" style="margin-top: 30px;">
-            <h3 style="color: var(--charcoal); margin-bottom: 15px;">📸 Fotos hochladen & anschauen</h3>
-            <p style="color: var(--charcoal-light); margin-bottom: 20px;">Scannt den QR-Code oder klickt auf den Button um Fotos vom Umtrunk hochzuladen und die Galerie zu sehen.</p>
-            <a href="http://187.124.4.232:32770/s/4pAqS27JeSerJyy" target="_blank" class="nextcloud-btn">Zur Foto-Galerie →</a>
+
+        <div class="info-card fade-in">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
+            </div>
+            <h3>Verpflegung</h3>
+            <p>F&uuml;r das leibliche Wohl ist gesorgt!</p>
+            <p>Es gibt Getr&auml;nke und Snacks.</p>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section class="section gallery-section" id="gallery">
-        <h2 class="section-title fade-in">Bilder-Galerie</h2>
-        <p class="gallery-intro fade-in">Hier siehst du alle Fotos vom Umtrunk. Wir freuen uns über eure Schnappschüsse!</p>
+    <!-- Kleidung Section -->
+    <section class="section section-dresscode" id="dresscode">
+        <h2 class="section-title fade-in">Dresscode</h2>
+        
+        <div class="info-card fade-in">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <h3>Gem&uuml;tlich schick</h3>
+            <p>Schick, aber so, dass du dich wohlf&uuml;hlst.</p>
+        </div>
+    </section>
+
+    <!-- Geschenke Section -->
+    <section class="section section-geschenke" id="geschenke">
+        <h2 class="section-title fade-in">Geschenke</h2>
+        
+        <div class="info-card fade-in">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <h3>Wir freuen uns über Geldgeschenke</h3>
+            <p>Eine Kiste für Karten steht bereit – ihr wisst schon!</p>
+        </div>
+    </section>
+
+    <!-- Galerie Section -->
+    <section class="section section-galerie" id="galerie">
+        <h2 class="section-title fade-in">Galerie</h2>
+        <p class="gallery-intro fade-in" style="text-align: center; max-width: 600px; margin: 0 auto 40px; font-family: 'Montserrat', sans-serif; font-size: 0.95rem; color: var(--charcoal-light);">
+            Hier siehst du alle Fotos. Wir freuen uns über eure Schnappschüsse!
+        </p>
+        
         <div class="gallery-grid fade-in" id="gallery-grid">
-            <!-- Photos will be loaded here by JavaScript -->
             <div class="gallery-placeholder">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -494,227 +848,493 @@
                 <span>Laden...</span>
             </div>
         </div>
-    </section>
 
-    <!-- Upload Section -->
-    <section class="section upload-section" id="upload">
-        <h2 class="section-title fade-in">Foto hochladen</h2>
-        <p class="gallery-intro fade-in" style="color: white; opacity: 0.9;">Teilt eure schönsten Momente mit uns!</p>
-        <div class="upload-area fade-in" id="upload-area">
-            <div class="upload-icon">
+        <div class="upload-section fade-in" id="upload-area" style="margin-top: 40px; border-color: var(--sage); background: var(--cream);">
+            <div class="upload-icon" style="background: var(--sage);">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                 </svg>
             </div>
-            <p class="upload-text">Klicke hier oder ziehe Fotos hierher</p>
-            <p class="upload-hint">JPG, PNG bis zu 10MB</p>
+            <p class="upload-text" style="color: var(--charcoal); text-align: center;">Klicke hier oder ziehe Fotos hierher</p>
+            <p class="upload-hint" style="color: var(--charcoal-light); text-align: center;">JPG, PNG bis zu 10MB</p>
             <input type="file" id="file-input" class="upload-input" multiple accept="image/*">
             <div class="upload-status" id="upload-status"></div>
         </div>
     </section>
 
+    <!-- Musik Section -->
+    <section class="section section-musik" id="musik">
+        <h2 class="section-title fade-in">Musik</h2>
+        
+        <div class="moba-card fade-in">
+            <h3>🎵 Mach mit!</h3>
+            <p>Dir gef&auml;llt ein Song?</p>
+            <p>Dann f&uuml;g ihn hier hinzu!</p>
+            <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.8;">Ab dem 03.10.2026 verf&uuml;gbar.</p>
+            <a class="moba-btn disabled">Coming Soon 🎉</a>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
-        <div class="hearts">♥ ♥ ♥</div>
-        <p>Nico & Franziska | 03. Oktober 2026</p>
+        <p>Wir freuen uns auf dich!</p>
+        <div class="hearts" style="font-size: 1.5rem; margin: 20px 0; color: #C9A227; text-shadow: 0 0 10px rgba(201, 162, 39, 0.6);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#C9A227" style="vertical-align: middle; filter: drop-shadow(0 0 4px rgba(201, 162, 39, 0.5));"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#C9A227" style="vertical-align: middle; margin: 0 8px; filter: drop-shadow(0 0 4px rgba(201, 162, 39, 0.5));"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#C9A227" style="vertical-align: middle; filter: drop-shadow(0 0 4px rgba(201, 162, 39, 0.5));"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </div>
+        <p>Franziska & Nico | 03. Oktober 2026</p>
     </footer>
 
+    <!-- RSVP Section -->
+    <section class="section section-rsvp" id="rsvp" style="background: linear-gradient(135deg, var(--sage) 0%, var(--sage-light) 100%); color: white; padding: 60px 20px; max-width: 1200px; margin: 0 auto;">
+        <div class="rsvp-inline">
+            <button class="rsvp-close" onclick="closeRsvpInline()" style="float: right; background: rgba(255,255,255,0.2); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: none;">×</button>
+            <div class="rsvp-header" style="text-align: center; margin-bottom: 30px;">
+                <div style="font-size: 2rem; margin-bottom: 10px;">♥ ♥ ♥</div>
+                <h2 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 10px;">Willst du dabei sein?</h2>
+                <p id="rsvpDeadlineTextInline" style="opacity: 0.9;">Gib uns bis zum 01.06.2026 Bescheid</p>
+            </div>
+            <form id="rsvpFormInline" class="rsvp-form" style="max-width: 500px; margin: 0 auto;">
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="rsvpNameInline" style="display: block; margin-bottom: 8px; font-size: 0.9rem;">Dein Name</label>
+                    <input type="text" id="rsvpNameInline" placeholder="Wie heißt du?" required style="width: 100%; padding: 15px; border: 2px solid rgba(255,255,255,0.3); border-radius: 12px; background: rgba(255,255,255,0.1); color: white; font-size: 1rem;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="rsvpGuestsInline" style="display: block; margin-bottom: 8px; font-size: 0.9rem;">Plus Gäste?</label>
+                    <select id="rsvpGuestsInline" style="width: 100%; padding: 15px; border: 2px solid rgba(255,255,255,0.3); border-radius: 12px; background: rgba(255,255,255,0.1); color: white; font-size: 1rem;">
+                        <option value="1">Nur ich</option>
+                        <option value="2">Ich + 1 Person</option>
+                        <option value="3">Ich + 2 Personen</option>
+                        <option value="4">Ich + 3 Personen</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-size: 0.9rem;">Bist du dabei?</label>
+                    <div class="status-options" style="display: flex; gap: 10px;">
+                        <label class="status-option" style="flex: 1;">
+                            <input type="radio" name="rsvpStatusInline" value="yes" checked style="display: none;">
+                            <span style="display: block; padding: 15px; border-radius: 12px; text-align: center; background: rgba(255,255,255,0.2); cursor: pointer;">Ja, ich komme! 🎉</span>
+                        </label>
+                        <label class="status-option" style="flex: 1;">
+                            <input type="radio" name="rsvpStatusInline" value="no" style="display: none;">
+                            <span style="display: block; padding: 15px; border-radius: 12px; text-align: center; background: rgba(255,255,255,0.2); cursor: pointer;">Nein</span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn" style="width: 100%; padding: 18px; background: var(--gold); color: var(--charcoal); border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600; cursor: pointer; margin-top: 10px;">Absenden</button>
+                <div class="form-message" id="rsvpErrorInline" style="display: none; padding: 10px; background: rgba(255,255,255,0.2); border-radius: 8px; margin-top: 10px;"></div>
+            </form>
+            <div class="rsvp-success" id="rsvpSuccessInline" style="display: none; text-align: center; padding: 20px;">
+                <h2 id="rsvpSuccessTitleInline" style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 10px;">Danke!</h2>
+                <p id="rsvpSuccessTextInline">Deine Anmeldung wurde gespeichert.</p>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .section-rsvp {
+            display: none;
+        }
+        .section-rsvp.visible {
+            display: block;
+        }
+        .section-rsvp .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+        .section-rsvp input::placeholder,
+        .section-rsvp select {
+            color: rgba(255,255,255,0.8);
+        }
+        .section-rsvp select option {
+            background: var(--charcoal);
+            color: white;
+        }
+    </style>
+
     <script>
-        // Configuration - to be set by Tony
-        const NEXTCLOUD_WEBDAV = 'http://187.124.4.232:32770/remote.php/dav/files/tony/';
-        const NEXTCLOUD_FOLDER = 'Umtrunk_2026/';
-
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        // RSVP Inline Logic
+        const RSVP_DEADLINE = new Date('2026-06-01');
+        const RSVP_STORAGE_KEY = 'rsvp_submitted_' + window.location.hostname;
+        let rsvpSubmitted = false;
+        
+        function showRsvpSection() {
+            const section = document.querySelector('.section-rsvp');
+            if (section) section.classList.add('visible');
+            document.body.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function closeRsvpInline() {
+            const section = document.querySelector('.section-rsvp');
+            if (section) section.classList.remove('visible');
+        }
+        
+        // Check if RSVP is available and not yet submitted
+        function checkRsvp() {
+            const now = new Date();
+            if (now > RSVP_DEADLINE) return false;
+            if (localStorage.getItem(RSVP_STORAGE_KEY)) return false;
+            return true;
+        }
+        
+        // Show section on page load if conditions met
+        // REMOVED: Using modal instead
+        
+        // Handle RSVP form submission (inline form - kept for fallback)
+        document.getElementById('rsvpFormInline').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('.submit-btn');
+            btn.disabled = true;
+            btn.textContent = 'Wird gesendet...';
+            
+            const data = {
+                name: document.getElementById('rsvpNameInline').value,
+                guests: parseInt(document.getElementById('rsvpGuestsInline').value),
+                status: document.querySelector('input[name=\"rsvpStatusInline\"]:checked').value,
+                message: ''
+            };
+            
+            try {
+                const response = await fetch('/rsvp/rsvp.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                
+                if (result.success) {
+                    localStorage.setItem(RSVP_STORAGE_KEY, '1');
+                    document.getElementById('rsvpFormInline').style.display = 'none';
+                    document.getElementById('rsvpSuccessInline').style.display = 'block';
+                    document.getElementById('rsvpDeadlineTextInline').style.display = 'none';
+                    document.getElementById('rsvpSuccessTitleInline').textContent = 
+                        data.status === 'yes' ? 'See you there! 🥳' : 'Schade! 😢';
+                    document.getElementById('rsvpSuccessTextInline').textContent = 
+                        data.status === 'yes' ? 'Wir freuen uns auf dich!' : 'Vielleicht ein anderes Mal!';
+                } else {
+                    document.getElementById('rsvpErrorInline').textContent = result.error || 'Fehler';
+                    document.getElementById('rsvpErrorInline').style.display = 'block';
+                    btn.disabled = false;
+                    btn.textContent = 'Nochmal versuchen';
                 }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
+            } catch (err) {
+                document.getElementById('rsvpErrorInline').textContent = 'Netzwerkfehler';
+                document.getElementById('rsvpErrorInline').style.display = 'block';
+                btn.disabled = false;
+                btn.textContent = 'Nochmal versuchen';
+            }
         });
+    </script>
 
-        // Navigation dots
-        const sections = ['hero', 'info', 'gallery', 'upload'];
-        const dots = document.querySelectorAll('.nav-dot');
+    <!-- Parking Modal Overlay -->
+    <div id="parkingModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; z-index: 9999; padding: 15px; backdrop-filter: blur(5px);">
+        <div style="background: white; border-radius: 20px; padding: 30px 25px; max-width: 380px; width: 100%; position: relative; box-shadow: 0 25px 80px rgba(0,0,0,0.3); text-align: center;">
+            <button onclick="closeParkingPopup()" style="position: absolute; top: 12px; right: 12px; width: 30px; height: 30px; border-radius: 50%; background: #9BA88A; border: none; cursor: pointer; font-size: 1.1rem; color: white; line-height: 1;">×</button>
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: #2C3E2D; margin-bottom: 15px;">🅿 Parken</h2>
+            <p style="color: #4A5A48; margin-bottom: 20px; font-size: 0.95rem; line-height: 1.5;">Parken ist an folgenden Orten m&ouml;glich:</p>
+            <div style="text-align: center; background: #F5F5F0; border-radius: 15px; padding: 15px; margin-bottom: 15px;">
+                <p style="font-size: 0.9rem; color: #2C3E2D; margin-bottom: 5px;">📍 <strong>Parktaschen</strong></p>
+                <p style="color: #6B7A5A; font-size: 0.85rem; margin-bottom: 8px;">B&uuml;sdorfer Str. 5b</p>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=B%C3%BCsdorfer+Str.+5b,+50129+Bergheim" target="_blank" style="display: inline-block; padding: 6px 12px; background: var(--sage); color: white; text-decoration: none; border-radius: 15px; font-size: 0.8rem;">Route</a>
+            </div>
+            <div style="text-align: center; background: #F5F5F0; border-radius: 15px; padding: 15px; margin-bottom: 15px;">
+                <p style="font-size: 0.9rem; color: #2C3E2D; margin-bottom: 5px;">📍 <strong>Alter Sportplatz</strong></p>
+                <p style="color: #6B7A5A; font-size: 0.85rem; margin-bottom: 8px;">Niederau&szlig;emer Str. 30<br>ca. 5 Minuten Fu&szlig;weg</p>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=Niederau%C3%9Femer+Str.+30,+50129+Bergheim" target="_blank" style="display: inline-block; padding: 6px 12px; background: var(--sage); color: white; text-decoration: none; border-radius: 15px; font-size: 0.8rem;">Route</a>
+            </div>
+        </div>
+    </div>
 
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                const sectionId = dot.dataset.section;
-                document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-            });
+    <script>
+        function showParkingPopup() {
+            document.getElementById('parkingModal').style.display = 'flex';
+        }
+        function closeParkingPopup() {
+            document.getElementById('parkingModal').style.display = 'none';
+        }
+        document.getElementById('parkingModal').addEventListener('click', function(e) {
+            if (e.target === this) closeParkingPopup();
         });
+    </script>
 
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const sectionId = entry.target.id;
-                    dots.forEach(dot => {
-                        dot.classList.toggle('active', dot.dataset.section === sectionId);
-                    });
+    <!-- RSVP Modal Overlay -->
+    <div id="rsvpModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; z-index: 9999; padding: 20px; backdrop-filter: blur(5px);">
+        <div style="background: white; border-radius: 25px; padding: 50px 40px; max-width: 480px; width: 100%; position: relative; box-shadow: 0 25px 80px rgba(0,0,0,0.3); text-align: center;">
+            <button onclick="closeRsvpModal()" style="position: absolute; top: 20px; right: 20px; width: 35px; height: 35px; border-radius: 50%; background: #9BA88A; border: none; cursor: pointer; font-size: 1.2rem; color: white; line-height: 1;">×</button>
+            <div style="font-size: 1.5rem; margin-bottom: 15px;"></div>
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: #2C3E2D; margin-bottom: 10px;">Willst du dabei sein?</h2>
+            <p id="rsvpDeadlineText" style="color: #6B7A5A; margin-bottom: 30px;">Gib uns bis zum 01.06.2026 Bescheid</p>
+            <form id="rsvpFormModal">
+                <div style="margin-bottom: 20px; text-align: left;">
+                    <label style="display: block; font-size: 0.85rem; color: #4A5A48; margin-bottom: 8px; font-weight: 500;">Dein Name</label>
+                    <input type="text" id="rsvpNameModal" placeholder="Wie heißt du?" required style="width: 100%; padding: 15px 18px; border: 2px solid #9BA88A; border-radius: 12px; font-size: 1rem; font-family: 'Montserrat', sans-serif; background: #F5F5F0; color: #2C3E2D; box-sizing: border-box;">
+                </div>
+                <div style="margin-bottom: 20px; text-align: left;">
+                    <label style="display: block; font-size: 0.85rem; color: #4A5A48; margin-bottom: 8px; font-weight: 500;">Plus Gäste?</label>
+                    <select id="rsvpGuestsModal" style="width: 100%; padding: 15px 18px; border: 2px solid #9BA88A; border-radius: 12px; font-size: 1rem; font-family: 'Montserrat', sans-serif; background: #F5F5F0; color: #2C3E2D; box-sizing: border-box;">
+                        <option value="1">Nur ich</option>
+                        <option value="2">Ich + 1 Person</option>
+                        <option value="3">Ich + 2 Personen</option>
+                        <option value="4">Ich + 3 Personen</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; font-size: 0.85rem; color: #4A5A48; margin-bottom: 8px; font-weight: 500;">Bist du dabei?</label>
+                    <div style="display: flex; gap: 10px;">
+                        <label style="flex: 1; cursor: pointer;">
+                            <input type="radio" name="rsvpStatusModal" value="yes" checked style="display: none;">
+                            <span style="display: block; padding: 15px 10px; border-radius: 12px; text-align: center; font-size: 0.9rem; background: #6B7A5A; color: white; transition: all 0.3s;">Ja, ich komme! 🎉</span>
+                        </label>
+                        <label style="flex: 1; cursor: pointer;">
+                            <input type="radio" name="rsvpStatusModal" value="no" style="display: none;">
+                            <span style="display: block; padding: 15px 10px; border-radius: 12px; text-align: center; font-size: 0.9rem; background: #E8E8E0; color: #2C3E2D; transition: all 0.3s;">Nein</span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" style="width: 100%; padding: 18px; background: #E8B923; color: #2C3E2D; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600; font-family: 'Montserrat', sans-serif; cursor: pointer; margin-top: 10px; text-shadow: 0 1px 3px rgba(0,0,0,0.2);">Absenden</button>
+                <div id="rsvpErrorModal" style="display: none; padding: 10px; background: #FFE5E5; border-radius: 8px; color: #C00; margin-top: 15px; font-size: 0.9rem;"></div>
+            </form>
+            <div id="rsvpSuccessModal" style="display: none; padding: 20px;">
+                <h2 id="rsvpSuccessTitleModal" style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #6B7A5A; margin-bottom: 10px;">Danke!</h2>
+                <p id="rsvpSuccessTextModal" style="margin-bottom: 20px;">Deine Rückmeldung wurde gespeichert.</p>
+                <div id="rsvpStep2" style="text-align: center;">
+                    <label style="display: block; font-size: 0.85rem; color: #4A5A48; margin-bottom: 8px; font-weight: 500;">Noch ein Hinweis? (optional)</label>
+                    <textarea id="rsvpMessageModal" placeholder="z.B. Ich bringe noch jemanden mit..." style="width: 100%; padding: 12px 15px; border: 2px solid #9BA88A; border-radius: 12px; font-size: 0.9rem; font-family: 'Montserrat', sans-serif; background: #F5F5F0; color: #2C3E2D; box-sizing: border-box; resize: vertical; min-height: 60px;"></textarea>
+                    <button type="button" onclick="submitRsvpHint()" style="width: 100%; padding: 12px; background: #6B7A5A; color: white; border: none; border-radius: 10px; font-size: 0.9rem; font-family: 'Montserrat', sans-serif; cursor: pointer; margin-top: 15px;">Hinweis absenden</button>
+                    <a href="https://qr031026-umtrunk.nf3d.de/umtrunk-2026.ics" download="umtrunk-2026.ics" style="display: block; margin-top: 10px; padding: 12px 20px; background: linear-gradient(135deg, #C9A227 0%, #D4AF37 100%); color: white; text-decoration: none; border-radius: 10px; font-weight: 500; font-size: 0.9rem; box-shadow: 0 3px 10px rgba(201, 162, 39, 0.3);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white" style="vertical-align: middle; margin-right: 6px;"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
+                        Termin zum Kalender hinzufügen
+                    </a>
+                    <button type="button" onclick="closeRsvpModal()" style="width: 100%; padding: 12px; background: #E8E8E0; color: #4A5A48; border: none; border-radius: 10px; font-size: 0.9rem; font-family: 'Montserrat', sans-serif; cursor: pointer; margin-top: 10px;">Fertig</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // RSVP Modal Logic
+        function showRsvpModal() {
+            document.getElementById('rsvpModal').style.display = 'flex';
+        }
+        function closeRsvpModal() {
+            document.getElementById('rsvpModal').style.display = 'none';
+        }
+        document.getElementById('rsvpModal').addEventListener('click', function(e) {
+            if (e.target === this) closeRsvpModal();
+        });
+        if (checkRsvp()) {
+            setTimeout(showRsvpModal, 800);
+        }
+        document.getElementById('rsvpFormModal').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.textContent = 'Wird gesendet...';
+            const data = {
+                name: document.getElementById('rsvpNameModal').value,
+                guests: parseInt(document.getElementById('rsvpGuestsModal').value),
+                status: document.querySelector('input[name="rsvpStatusModal"]:checked').value
+            };
+            try {
+                const response = await fetch('/rsvp/rsvp.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                if (result.success) {
+                    localStorage.setItem(RSVP_STORAGE_KEY, '1');
+                    document.getElementById('rsvpFormModal').style.display = 'none';
+                    document.getElementById('rsvpSuccessModal').style.display = 'block';
+                    document.getElementById('rsvpDeadlineText').style.display = 'none';
+                    document.getElementById('rsvpSuccessTitleModal').textContent = data.status === 'yes' ? 'See you there!' : 'Schade!';
+                    document.getElementById('rsvpSuccessTextModal').textContent = data.status === 'yes' ? 'Wir freuen uns auf dich!' : 'Vielleicht ein anderes Mal!';
+                } else {
+                    document.getElementById('rsvpErrorModal').textContent = result.error || 'Fehler';
+                    document.getElementById('rsvpErrorModal').style.display = 'block';
+                    btn.disabled = false;
+                    btn.textContent = 'Nochmal versuchen';
                 }
-            });
-        }, { threshold: 0.5 });
-
-        sections.forEach(sectionId => {
-            sectionObserver.observe(document.getElementById(sectionId));
+            } catch (err) {
+                document.getElementById('rsvpErrorModal').textContent = 'Netzwerkfehler';
+                document.getElementById('rsvpErrorModal').style.display = 'block';
+                btn.disabled = false;
+                btn.textContent = 'Nochmal versuchen';
+            }
         });
 
-        // Load gallery photos from Nextcloud WebDAV
+        async function submitRsvpHint() {
+            const message = document.getElementById('rsvpMessageModal').value.trim();
+            if (!message) {
+                closeRsvpModal();
+                return;
+            }
+            try {
+                const response = await fetch('/rsvp/rsvp.php?action=update_message', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: document.getElementById('rsvpNameModal').value,
+                        message: message
+                    })
+                });
+                const result = await response.json();
+                document.getElementById('rsvpStep2').innerHTML = '<p style="color: #6B7A5A; text-align: center;">Danke für den Hinweis!</p>';
+                setTimeout(closeRsvpModal, 1500);
+            } catch (err) {
+                document.getElementById('rsvpStep2').innerHTML = '<p style="color: #C00; text-align: center;">Fehler beim Senden</p>';
+            }
+        }
+
+        // Gallery & Upload Functions
+        const GALLERY_FOLDER = 'Umtrunk_2026';
+
         async function loadGallery() {
             const grid = document.getElementById('gallery-grid');
+            if (!grid) return;
             
-            if (!NEXTCLOUD_WEBDAV) {
-                grid.innerHTML = `
-                    <div class="gallery-placeholder" style="grid-column: 1/-1; padding: 60px 20px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
-                        </svg>
-                        <span>Galerie wird noch eingerichtet...</span>
-                        <span style="font-size: 0.75rem; margin-top: 10px; opacity: 0.7;">NEXTCLOUD_WEBDAV und NEXTCLOUD_FOLDER konfigurieren</span>
-                    </div>
-                `;
-                return;
-            }
-
             try {
-                const response = await fetch(NEXTCLOUD_WEBDAV + NEXTCLOUD_FOLDER, {
-                    method: 'PROPFIND',
-                    headers: {
-                        'Depth': '1'
-                    }
-                });
-
-                const text = await response.text();
-                const parser = new DOMParser();
-                const xml = parser.parseFromString(text, 'text/xml');
-                const items = xml.querySelectorAll('d\\:href, href');
-
-                const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
-                let imagesHtml = '';
-
-                items.forEach(item => {
-                    const href = item.textContent || item.innerText;
-                    const fileName = decodeURIComponent(href.split('/').pop());
-                    
-                    if (imageExtensions.some(ext => fileName.toLowerCase().endsWith(ext))) {
-                        const fileUrl = NEXTCLOUD_WEBDAV + NEXTCLOUD_FOLDER + encodeURIComponent(fileName);
-                        imagesHtml += `
-                            <div class="gallery-item">
-                                <img src="${fileUrl}" alt="${fileName}" loading="lazy">
-                            </div>
-                        `;
-                    }
-                });
-
-                if (imagesHtml) {
-                    grid.innerHTML = imagesHtml;
+                const response = await fetch('/upload.php?action=list&folder=' + encodeURIComponent(GALLERY_FOLDER));
+                const data = await response.json();
+                
+                if (data.files && data.files.length > 0) {
+                    grid.innerHTML = data.files.map(filename => {
+                        const timestamp = Date.now();
+                        return `<div class="gallery-item" onclick="window.open('http://187.124.4.232:32769/s/pP8s8zcSP9CFP2D', '_blank')" style="cursor:pointer;">
+                            <img src="/upload.php?action=file&folder=${encodeURIComponent(GALLERY_FOLDER)}&file=${encodeURIComponent(filename)}&t=${timestamp}" alt="Foto" loading="lazy">
+                        </div>`;
+                    }).join('');
                 } else {
-                    grid.innerHTML = `
-                        <div class="gallery-placeholder" style="grid-column: 1/-1;">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            <span>Noch keine Fotos vorhanden</span>
-                            <span style="font-size: 0.75rem; margin-top: 5px;">Sei der Erste, der ein Foto hochlädt!</span>
-                        </div>
-                    `;
-                }
-            } catch (error) {
-                console.error('Gallery load error:', error);
-                grid.innerHTML = `
-                    <div class="gallery-placeholder" style="grid-column: 1/-1; color: var(--charcoal-light);">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    grid.innerHTML = `<div class="gallery-placeholder" style="grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; color: var(--charcoal-light); text-align: center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 50px; height: 50px; opacity: 0.5; margin-bottom: 15px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        <span>Galerie nicht verfügbar</span>
-                    </div>
-                `;
+                        <span style="font-size: 1rem;">Hier werden sp&auml;ter Fotos angezeigt</span>
+                    </div>`;
+                }
+            } catch (err) {
+                console.error('Gallery load error:', err);
             }
         }
 
-        // File upload handling
-        const uploadArea = document.getElementById('upload-area');
-        const fileInput = document.getElementById('file-input');
-        const uploadStatus = document.getElementById('upload-status');
-
-        uploadArea.addEventListener('click', () => fileInput.click());
-
-        uploadArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            uploadArea.style.borderColor = 'white';
-            uploadArea.style.background = 'rgba(255,255,255,0.1)';
-        });
-
-        uploadArea.addEventListener('dragleave', () => {
-            uploadArea.style.borderColor = 'rgba(255,255,255,0.4)';
-            uploadArea.style.background = 'transparent';
-        });
-
-        uploadArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            uploadArea.style.borderColor = 'rgba(255,255,255,0.4)';
-            uploadArea.style.background = 'transparent';
-            handleFiles(e.dataTransfer.files);
-        });
-
-        fileInput.addEventListener('change', () => {
-            handleFiles(fileInput.files);
-        });
-
-        async function handleFiles(files) {
-            if (!NEXTCLOUD_WEBDAV) {
-                showStatus('Galerie noch nicht konfiguriert. Bitte warten...', 'error');
+        function setupUpload() {
+            const area = document.getElementById('upload-area');
+            const input = document.getElementById('file-input');
+            const status = document.getElementById('upload-status');
+            
+            if (!area || !input) return;
+            
+            // Upload locked until October 1, 2026 08:00 CEST (UTC+2 = 06:00 UTC)
+            const UNLOCK_DATE = new Date('2026-10-01T06:00:00Z');
+            const now = new Date();
+            if (now < UNLOCK_DATE) {
+                area.style.opacity = '0.5';
+                area.style.cursor = 'not-allowed';
+                area.style.pointerEvents = 'none';
+                status.style.display = 'block';
+                status.className = 'upload-status error';
+                status.innerHTML = 'Upload wird ab<br>01.10.2026 08:00 Uhr freigeschaltet';
                 return;
             }
 
-            Array.from(files).forEach(async (file) => {
-                if (file.size > 10 * 1024 * 1024) {
-                    showStatus(` ${file.name} ist zu groß (max. 10MB)`, 'error');
-                    return;
-                }
-
-                showStatus(` Lade ${file.name} hoch...`, 'info');
-
-                try {
-                    const fileName = `${Date.now()}_${file.name}`;
-                    const response = await fetch(NEXTCLOUD_WEBDAV + NEXTCLOUD_FOLDER + fileName, {
-                        method: 'PUT',
-                        body: file
-                    });
-
-                    if (response.ok) {
-                        showStatus(` ${file.name} erfolgreich hochgeladen!`, 'success');
-                        setTimeout(loadGallery, 1000);
-                    } else {
-                        showStatus(` Fehler beim Hochladen von ${file.name}`, 'error');
-                    }
-                } catch (error) {
-                    showStatus(` Fehler: ${error.message}`, 'error');
-                }
-            });
-        }
-
-        function showStatus(message, type) {
-            uploadStatus.textContent = message;
-            uploadStatus.style.display = 'block';
-            uploadStatus.className = 'upload-status ' + type;
+            area.addEventListener('click', () => input.click());
             
-            setTimeout(() => {
-                uploadStatus.style.display = 'none';
-            }, 5000);
+            area.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                area.style.borderColor = 'var(--gold)';
+            });
+            
+            area.addEventListener('dragleave', () => {
+                area.style.borderColor = 'var(--sage)';
+            });
+            
+            area.addEventListener('drop', (e) => {
+                e.preventDefault();
+                area.style.borderColor = 'var(--sage)';
+                handleFiles(e.dataTransfer.files);
+            });
+            
+            input.addEventListener('change', () => {
+                handleFiles(input.files);
+            });
+            
+            async function handleFiles(files) {
+                if (!files || files.length === 0) return;
+                
+                status.style.display = 'block';
+                status.className = 'upload-status';
+                status.textContent = 'Wird hochgeladen...';
+                
+                let successCount = 0;
+                let errorCount = 0;
+                
+                for (const file of files) {
+                    const formData = new FormData();
+                    formData.append('file', file);
+                    
+                    try {
+                        const response = await fetch('/upload.php?action=upload&folder=' + encodeURIComponent(GALLERY_FOLDER), {
+                            method: 'POST',
+                            body: formData
+                        });
+                        const result = await response.json();
+                        
+                        if (result.success) {
+                            successCount++;
+                        } else {
+                            errorCount++;
+                        }
+                    } catch (err) {
+                        errorCount++;
+                    }
+                }
+                
+                if (errorCount === 0) {
+                    status.className = 'upload-status success';
+                    status.textContent = successCount + ' Foto(s) erfolgreich hochgeladen!';
+                    input.value = '';
+                    loadGallery();
+                } else {
+                    status.className = 'upload-status error';
+                    status.textContent = 'Fehler beim Hochladen einiger Dateien';
+                }
+                
+                setTimeout(() => {
+                    status.style.display = 'none';
+                }, 4000);
+            }
         }
 
-        // Initial gallery load
-        loadGallery();
+        // Initialize on page load
+        // Countdown to event
+        function updateCountdown() {
+            const eventDate = new Date('2026-10-03T16:00:00+02:00');
+            const now = new Date();
+            const diff = eventDate - now;
+            
+            if (diff <= 0) {
+                document.getElementById('cd-days').textContent = '0';
+                document.getElementById('cd-hours').textContent = '0';
+                document.getElementById('cd-mins').textContent = '0';
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            
+            document.getElementById('cd-days').textContent = days;
+            document.getElementById('cd-hours').textContent = hours;
+            document.getElementById('cd-mins').textContent = mins;
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            loadGallery();
+            setupUpload();
+        });
     </script>
 </body>
 </html>
